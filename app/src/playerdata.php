@@ -5,7 +5,7 @@ declare(strict_types=1);
 class Player
 {
     public string $name;
-    private int $points = 0;
+    public int $points = 0;
 
     public function __construct(string $name, int $points = 0)
     {
@@ -17,6 +17,13 @@ class Player
     {
         return $this->points;
     }
+
+    public function givePoint(): void
+    {
+        $this->points ++;
+        echo '+1 Point';
+    }
+
 
     public function savePlayerData(string $session): bool
     {
@@ -90,8 +97,8 @@ class Player
 
 function testCreatePlayers()
 {
-    $testplayer = new Player('Test');
-    $testplayer2 = new Player('test2');
+    $testplayer = new Player('Test', 12);
+    $testplayer2 = new Player('test2', 13);
     $testplayer3 = new Player('Test3');
 
     $testplayer->savePlayerData('testsesh');
